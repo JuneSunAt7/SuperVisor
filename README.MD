@@ -1,8 +1,7 @@
 # That is a simple project manager for plug-in libs for C++ project.
 
 ## Base architecture of project
-https://github.com/JuneSunAt7/SuperVisor/assets/63651740/f4740d0d-4696-4a8e-a659-2a357d84ba59
-
+![-5390936186098406579_121.jpg](https://github.com/JuneSunAt7/SuperVisor/assets/63651740/f4740d0d-4696-4a8e-a659-2a357d84ba59
 ## Here is a simple example of using this utility:
 
 
