@@ -2,6 +2,7 @@
 
 ## Here is a simple example of using this utility:
 
+![alt text](Untitled.png)
 > Project name: `my_project`
 
 > Full path to project: `D:\\programming\\CPP\\`
