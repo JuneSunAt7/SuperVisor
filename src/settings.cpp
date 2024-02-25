@@ -1,21 +1,35 @@
 #include "../headers/settings.h"
+#include "../headers/colors.h"
 
+#include <filesystem>
 
-SetupSettings::SetupSettings(const std::string &path): settingsFilename(path + "supervis.ini"){
+SetupSettings::SetupSettings(CreateProject &project){
+    _setup_settings(project);
 }
 
-const std::string SetupSettings::_take_filname(const std::string &path){
-    return path + "supervis.ini";
-}
+void SetupSettings::_setup_settings(CreateProject &project){
 
-void SetupSettings::_create_file(){
-    std::ofstream file;
-    file.open(settingsFilename);
+    std::filesystem::create_directories(project.user_project.pathToProject + "\\" + project.user_project.projectName);
 
-    if (file.is_open()) {
-        std::cout << "Settings file created successfully: " << settingsFilename << std::endl;
-        file.close();
+    std::ofstream outfile(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\supervis.ini");
+
+    if (outfile.is_open()) {
+        outfile << "[" << project.user_project.projectName << "]" << "\n";
+        outfile << "owner=" << project.user_project.owner << "\n";
+        outfile << "version=" << project.user_project.versionProject << "\n";
+
+        outfile << "[Libs]\n";
+        for(const auto &elem : project.user_project.libs){
+            outfile << "lib=" << elem <<"\n";
+        }
+
+        outfile.close();
+        std::cout << GREEN;
+        std::cout << "Succesful setup settings" << std::endl;
+        std::cout << RESET;
     } else {
-        std::cerr << "Error creating settings file: " << settingsFilename << std::endl;
+        std::cout << RED;
+        std::cout << "Unable to open file!" << std::endl;
+        std::cout << RESET;
     }
 }

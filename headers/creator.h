@@ -1,3 +1,6 @@
+#ifndef CREATOR_H
+#define CREATOR_H
+
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -7,25 +10,24 @@ struct project
 {
     std::string projectName;
     std::string pathToProject;
-    std::list <std::string> libs;
+    std::list<std::string> libs;
     std::string owner;
-    std::string  versionProject;
+    std::string versionProject;
 };
 
-class CreateProject{
-    private:
-        project user_project;
-        
+class CreateProject {
+private:
+    std::string _get_project_name();
+    std::string _get_path_to_project();
+    std::list<std::string> _get_libs();
+    std::string _get_owner();
+    std::string _get_version();
 
-        std::string  _get_project_name();
-        std::string  _get_path_to_project();
-        std::list<std::string> _get_libs();
-        std::string _get_owner();
-        std::string  _get_version();
-        
-    public:
-    
-       CreateProject();
-       const std::string path = user_project.pathToProject; 
+public:
+    CreateProject();
+    project user_project;
 
+    void resume();
 };
+
+#endif

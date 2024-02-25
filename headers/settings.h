@@ -1,15 +1,17 @@
+#ifndef SETTINGS_H
+#define SETTINGS_H
+
 #include <iostream>
 #include <fstream>
+#include <windows.h>
 #include "creator.h"
 
-class SetupSettings{
-    private:
-        std::fstream settingsFile;
-        const std::string settingsFilename;
+class SetupSettings {
+private:
+    void _setup_settings(CreateProject &project);
 
-        const std::string _take_filname(const std::string &path);
-        void _create_file();
-    public:
-        SetupSettings(const std::string &path);
+public:
+    SetupSettings(CreateProject &project);
 };
 
+#endif
