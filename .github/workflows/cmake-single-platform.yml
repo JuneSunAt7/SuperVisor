@@ -1,0 +1,25 @@
+name: C++ Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up C++ tools
+      uses: msys2/setup-msys2@v2
+
+    - name: Install dependencies
+      run: sudo pacman -Syu --noconfirm mingw-w64-x86_64-toolchain
+
+    - name: Build and test
+      run: |
+        g++ -o hello_world.cpp
+        ./hello_world
