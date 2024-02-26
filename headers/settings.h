@@ -9,9 +9,10 @@
 class SetupSettings {
 private:
     void _setup_settings(CreateProject &project);
-
+    void _add_projects(CreateProject &project);
 public:
     SetupSettings(CreateProject &project);
+
 };
 
 #endif

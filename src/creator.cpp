@@ -2,7 +2,7 @@
 #include "../headers/colors.h"
 
 CreateProject::CreateProject(){
-    std::cout << CYAN << "________________NEW PROJECT___________\n";
+    std::cout << CYAN << "          NEW PROJECT         \n";
     std::cout << BLUE;
 
     user_project.projectName = _get_project_name();
@@ -10,8 +10,10 @@ CreateProject::CreateProject(){
     user_project.libs = _get_libs();
     user_project.owner = _get_owner();
     user_project.versionProject = _get_version(); 
+    user_project.compilerPath = _get_compiler_path();
 
-    resume(); 
+    std::cout << RESET;
+
     
 }
 
@@ -45,7 +47,6 @@ std::list <std::string> CreateProject::_get_libs(){
      for (int i = 0; i < countLibs; ++i) {
         std::cout << "Library " << i+1 << ": ";
         std::cin >> currentLib;
-        std::cout << "\n";
         projectLibs.push_back(currentLib);
     }
 
@@ -71,19 +72,11 @@ std::string CreateProject::_get_version(){
     return projectVersion;
 }
 
-void CreateProject::resume(){
+std::string CreateProject::_get_compiler_path(){
+    std::string compilerPath;
 
-    std::cout << YELLOW <<"________________RESUME___________\n";
+    std::cout << "Path to compiler: ";
+    std::cin >> compilerPath;
 
-    std::cout << "Project Name: " << user_project.projectName << std::endl;
-    std::cout << "Path to Project: " << user_project.pathToProject << std::endl;
-    std::cout << "Owner: " << user_project.owner << std::endl;
-    std::cout << "Version: " << user_project.versionProject << std::endl;
-
-    std::cout << "Libraries:\n";
-    for (const auto &lib : user_project.libs) {
-        std::cout << lib << std::endl;
-    }
-
-    std::cout << RESET;
+    return compilerPath;
 }

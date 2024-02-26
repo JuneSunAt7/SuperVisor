@@ -1,9 +1,7 @@
-#include "headers/creator.h"
-#include "headers/settings.h"
+#include "tui/mainwindow.h"
 
 int main(){
-    CreateProject project;
-    SetupSettings setting(project);
+    MainTerminal term;
 
     return 0;
 }
