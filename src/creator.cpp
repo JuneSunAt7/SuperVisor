@@ -1,5 +1,6 @@
 #include "../headers/creator.h"
 #include "../headers/colors.h"
+#include "../headers/settings.h"
 
 CreateProject::CreateProject(){
     std::cout << CYAN << "          NEW PROJECT         \n";
@@ -13,7 +14,7 @@ CreateProject::CreateProject(){
     user_project.compilerPath = _get_compiler_path();
 
     std::cout << RESET;
-
+    
     
 }
 

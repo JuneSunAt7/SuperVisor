@@ -7,7 +7,7 @@ Projects::Projects(){
     std::cout << MAGENTA << "[1] " << YELLOW << "view all projects\n";
     std::cout << MAGENTA << "[2] " << YELLOW << "delete project\n";
 
-    std::cout << RESET << "Choose operation: ";
+    std::cout << RESET << "Number of operation: ";
     std::cin >> numOfOperation;
     _choose_operation(numOfOperation);
 }
@@ -41,8 +41,9 @@ void Projects::_view_all_projects(){
 
     std::string line;
     while (std::getline(file, line)) {
-        std::cout << line << std::endl;
+        std::cout << CYAN << line << std::endl;
     }
+    std::cout << RESET;
 
     file.close();
 }

@@ -45,6 +45,7 @@ void MainTerminal::_run_user_operation(int operationNumber){
     switch(operationNumber){
     case 1:{
         CreateProject project;
+        SetupSettings settings(project);
         break;
     }
     case 2:{
