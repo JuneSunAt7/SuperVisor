@@ -1,0 +1,29 @@
+#include "colors.h"
+#include <iostream>
+#include <stdlib.h>
+#include <Windows.h>
+#include <array>
+#include <memory>
+
+struct dependes{
+    std::string pathToPython;
+    std::string pathToProgram;
+};
+
+class CheckerRRequrements{
+    private:
+        dependes user_deps;
+
+        bool _check_python();
+        void _get_path_to_python();
+        void _all_patches();
+
+        void _choose_operation(int &numOperation);
+
+        
+
+    public:
+        CheckerRRequrements();
+
+
+};

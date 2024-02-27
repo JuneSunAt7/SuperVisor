@@ -5,6 +5,8 @@
 #include "../headers/settings.h"
 #include "../headers/colors.h"
 #include "../headers/read_projects.h"
+#include "../headers/check_requrements.h"
+
 #include <list>
 
 class MainTerminal{

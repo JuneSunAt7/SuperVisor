@@ -52,9 +52,11 @@ void MainTerminal::_run_user_operation(int operationNumber){
          Projects project;
          break;
     }
-    case 3:
-        // some code
+    case 3:{
+        CheckerRRequrements req;
         break;
+    }
+       
     default:
         break;
     }
