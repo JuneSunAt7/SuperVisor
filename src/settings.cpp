@@ -51,3 +51,4 @@ void SetupSettings::_add_projects(CreateProject &project){
     file.close();
 
 }
+

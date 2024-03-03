@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include <array>
 #include <memory>
+#include <filesystem>
 
 struct dependes{
     std::string pathToPython;

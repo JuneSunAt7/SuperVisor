@@ -5,7 +5,6 @@ CheckerRRequrements::CheckerRRequrements(){
     
     std::cout << MAGENTA << "[1] " << YELLOW << "check python set\n";
     std::cout << MAGENTA << "[2] " << YELLOW << "check path\n";
-    std::cout << MAGENTA << "[3] " << YELLOW << "rebase settings\n";
 
     std::cout << RESET << "Number of operation: ";
     std::cin >> numOfOperation;
@@ -49,7 +48,6 @@ void CheckerRRequrements::_choose_operation(int &numOperation){
         } else {
             std::cout << RED << "PATH variable not found" << RESET << std::endl;
         } 
-
         break;
     }
     default:

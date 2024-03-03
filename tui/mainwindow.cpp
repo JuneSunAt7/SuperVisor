@@ -46,18 +46,27 @@ void MainTerminal::_run_user_operation(int operationNumber){
     case 1:{
         CreateProject project;
         SetupSettings settings(project);
+        MainTerminal();
         break;
     }
     case 2:{
          Projects project;
+         MainTerminal();
          break;
     }
     case 3:{
         CheckerRRequrements req;
+        MainTerminal();
+        break;
+    }
+    case 4:{
+        
+        MainTerminal();
         break;
     }
        
     default:
+        std::cout << RED << "operation not found" << RESET << "\n";
         break;
     }
 }
