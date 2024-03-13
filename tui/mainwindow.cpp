@@ -15,8 +15,13 @@ MainTerminal::MainTerminal(){
 
     int count = 0;
     for(auto it = operations.begin(); it != operations.end(); it++) {
+        if(*it == "quit"){
+            std::cout << RED << "[5] " << YELLOW << *it << std::endl;
+        }
+        else{
         std::cout << MAGENTA <<"[" << count+1 << "] " << GREEN <<*it << std::endl;
         count++;
+        }
     }
     
     std::cout << RESET <<std::endl;
@@ -29,6 +34,7 @@ void MainTerminal::_update_operations(){
     operations.push_back("projects"); // view all soup projects
     operations.push_back("base settings");// setup python patches & patch var
     operations.push_back("library sources"); // so it may be github.com/owner or mega.com/@example
+    operations.push_back("quit");
 
 }
 
@@ -64,9 +70,14 @@ void MainTerminal::_run_user_operation(int operationNumber){
         MainTerminal();
         break;
     }
+    case 5:{
+        std::cout << GREEN << "Good Bye!" << RESET << "\n";
+        break;
+    }
        
     default:
         std::cout << RED << "operation not found" << RESET << "\n";
+        MainTerminal();
         break;
     }
 }

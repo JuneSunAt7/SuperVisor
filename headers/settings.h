@@ -10,6 +10,7 @@ class SetupSettings {
 private:
     void _setup_settings(CreateProject &project);
     void _add_projects(CreateProject &project);
+    void _add_path_project(CreateProject &project);
 public:
     SetupSettings(CreateProject &project);
 

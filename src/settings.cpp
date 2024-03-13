@@ -29,6 +29,7 @@ void SetupSettings::_setup_settings(CreateProject &project){
         std::cout << RESET;
 
         _add_projects(project);
+        _add_path_project(project);
 
     } else {
         std::cout << RED;
@@ -51,4 +52,15 @@ void SetupSettings::_add_projects(CreateProject &project){
     file.close();
 
 }
+void SetupSettings::_add_path_project(CreateProject &project){
+    std::ofstream file("path.spv", std::ios::app);
+    
+    if (!file.is_open()) {
+        std::cerr << "Failed to create settings" << std::endl;
+        return;
+    }
+    
+    file <<project.user_project.projectName << ":" << project.user_project.pathToProject+"\\"+project.user_project.projectName+"\\" << std::endl;
 
+    file.close();
+}

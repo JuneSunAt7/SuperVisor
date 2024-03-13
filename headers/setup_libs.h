@@ -4,21 +4,25 @@
 #include <list>
 #include <fstream>
 #include "colors.h"
-#include "creator.h"
 
 class CreateProject; // Forward declaration
 
 class LibsManager{
     private:
-        std::list <std::string> defaultLibs;
+        std::list <std::string> projects;
         std::list <std::string> userLibs;
 
-        void _add_user_libs();
-        void _add_to_default_set(std::list <std::string> &namesOfLibs);
+        void _add_to_default_set();
         void _view_all_libs();
+        void _add_global_libs();
+        std::list <std::string> _read_all_projects();
+
+        void _setup_local_libs(std::string &project_name);
+        void _setup_global_libs();
+        void _permission_libs();
 
     public:
-        LibsManager(CreateProject &project);
+        LibsManager();
         ~LibsManager();
 
         void choose_operation(int &operation);
