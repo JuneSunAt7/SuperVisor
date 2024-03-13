@@ -60,7 +60,7 @@ void MainTerminal::_run_user_operation(int operationNumber){
         break;
     }
     case 4:{
-        
+
         MainTerminal();
         break;
     }
