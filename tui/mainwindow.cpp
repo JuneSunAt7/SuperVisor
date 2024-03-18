@@ -77,7 +77,7 @@ void MainTerminal::_run_user_operation(int operationNumber){
        
     default:
         std::cout << RED << "operation not found" << RESET << "\n";
-        MainTerminal();
+         _run_user_operation(_choose_operation());
         break;
     }
 }

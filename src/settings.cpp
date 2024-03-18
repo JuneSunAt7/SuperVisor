@@ -30,6 +30,7 @@ void SetupSettings::_setup_settings(CreateProject &project){
 
         _add_projects(project);
         _add_path_project(project);
+        _create_lib_setup(project);
 
     } else {
         std::cout << RED;
@@ -63,4 +64,26 @@ void SetupSettings::_add_path_project(CreateProject &project){
     file <<project.user_project.projectName << ":" << project.user_project.pathToProject+"\\"+project.user_project.projectName+"\\" << std::endl;
 
     file.close();
+}
+
+void SetupSettings::_create_lib_setup(CreateProject &project){
+
+    std::ofstream outfile(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\libs.spv");
+
+    if (outfile.is_open()) {
+
+        for(const auto &elem : project.user_project.libs){
+            outfile << elem <<"\n";
+        }
+
+        outfile.close();
+        std::cout << GREEN;
+        std::cout << "Succesful setup libs for project" << std::endl;
+        std::cout << RESET;
+
+    } else {
+        std::cout << RED;
+        std::cout << "Unable to open file!" << std::endl;
+        std::cout << RESET;
+    }
 }
