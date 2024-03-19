@@ -91,10 +91,16 @@ void SetupSettings::_create_lib_setup(CreateProject &project){
 }
 void SetupSettings::_move_sys_files(CreateProject &project){
     std::string sourceFilePath = "python/check_repos.py";
+    std::string sourceRequirements = "python/requirements.txt";
+
     std::string destinationFilePath = project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup\\script.py";
+    std::string destinationFileReq = project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup\\requirements.txt";
 
     std::ifstream sourceFile(sourceFilePath, std::ios::binary);
+    std::ifstream sourceReq(sourceRequirements, std::ios::binary);
+
     std::ofstream destinationFile(destinationFilePath, std::ios::binary);
+    std::ofstream destinationReq(destinationFileReq, std::ios::binary);
 
     if (!sourceFile.is_open()) {
         std::cerr << RED <<"Error opening source file" << std::endl;
@@ -116,6 +122,27 @@ void SetupSettings::_move_sys_files(CreateProject &project){
     destinationFile.close();
 
     std::cout << GREEN <<"Script created succesful" << std::endl;
+
+     if (!sourceReq.is_open()) {
+        std::cerr << RED <<"Error opening requirements" << std::endl;
+        return;
+    }
+
+    if (!destinationReq.is_open()) {
+        std::cerr << RED <<"Error opening destination file" << std::endl;
+        return;
+    }
+
+    char bufferreq[4096];
+    while (!sourceReq.eof()) {
+        sourceReq.read(bufferreq, sizeof(bufferreq));
+        destinationReq.write(bufferreq, sourceReq.gcount());
+    }
+
+    sourceReq.close();
+    destinationReq.close();
+
+    std::cout << GREEN <<"Requirements created succesful" << std::endl;
 
     std::cout <<RESET;
 }
