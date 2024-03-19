@@ -4,7 +4,14 @@
 #include <filesystem>
 
 SetupSettings::SetupSettings(CreateProject &project){
+    std::filesystem::create_directories(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\project");
+    std::filesystem::create_directories(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\project\\src");
+    std::filesystem::create_directories(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\project\\headers");
+    std::filesystem::create_directories(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\docs");
+
+    std::ofstream outfile(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\docs\\README.MD");
     _setup_settings(project);
+
 }
 
 void SetupSettings::_setup_settings(CreateProject &project){
