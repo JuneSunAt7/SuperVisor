@@ -17,5 +17,5 @@ with open('u_libs.spv', 'r') as file:
     repositories = file.readlines()
     
 for repo_name in repositories:
-    repo_name = repo_name.strip()  # Убираем лишние пробелы и переносы строк
+    repo_name = repo_name.strip()  
     check_repo_exist(repo_name)

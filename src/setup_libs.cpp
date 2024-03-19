@@ -70,28 +70,7 @@ void LibsManager::_add_global_libs(){
     }
 
 }
-void LibsManager::_setup_local_libs(){
 
-    std::ofstream outfile(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\libs.ini");
-
-    if (outfile.is_open()) {
-        
-        for(const auto &elem : userLibs){
-            outfile << "lib=" << elem <<"\n";
-        }
-
-        outfile.close();
-        std::cout << GREEN;
-        std::cout << "Succesful setup libs for project" << std::endl;
-        std::cout << RESET;
-
-
-    } else {
-        std::cout << RED;
-        std::cout << "Unable to open file!" << std::endl;
-        std::cout << RESET;
-    }
-}
 
 void LibsManager::_permission_libs(){
     int operation;
@@ -156,7 +135,6 @@ std::list <std::string> LibsManager::_read_all_projects(){
         file.close();
     } else {
         std::cout << "Unable to open file" << std::endl;
-        return;
     }
 
     for (std::string value : values) {

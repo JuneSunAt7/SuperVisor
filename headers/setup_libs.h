@@ -17,7 +17,6 @@ class LibsManager{
         void _add_global_libs();
         std::list <std::string> _read_all_projects();
 
-        void _setup_local_libs(std::string &project_name);
         void _setup_global_libs();
         void _permission_libs();
 

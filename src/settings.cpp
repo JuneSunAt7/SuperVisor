@@ -1,6 +1,6 @@
 #include "../headers/settings.h"
 #include "../headers/colors.h"
-
+#include <sys/stat.h>
 #include <filesystem>
 
 SetupSettings::SetupSettings(CreateProject &project){
@@ -9,9 +9,9 @@ SetupSettings::SetupSettings(CreateProject &project){
 
 void SetupSettings::_setup_settings(CreateProject &project){
 
-    std::filesystem::create_directories(project.user_project.pathToProject + "\\" + project.user_project.projectName);
+    std::filesystem::create_directories(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup");
 
-    std::ofstream outfile(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\supervis.ini");
+    std::ofstream outfile(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup\\supervis.ini");
 
     if (outfile.is_open()) {
         outfile << "[" << project.user_project.projectName << "]" << "\n";
@@ -68,7 +68,7 @@ void SetupSettings::_add_path_project(CreateProject &project){
 
 void SetupSettings::_create_lib_setup(CreateProject &project){
 
-    std::ofstream outfile(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\libs.spv");
+    std::ofstream outfile(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup\\u_libs.spv");
 
     if (outfile.is_open()) {
 
@@ -80,10 +80,42 @@ void SetupSettings::_create_lib_setup(CreateProject &project){
         std::cout << GREEN;
         std::cout << "Succesful setup libs for project" << std::endl;
         std::cout << RESET;
+        _move_sys_files(project); // move python script for check repo
+        
 
     } else {
         std::cout << RED;
         std::cout << "Unable to open file!" << std::endl;
         std::cout << RESET;
     }
+}
+void SetupSettings::_move_sys_files(CreateProject &project){
+    std::string sourceFilePath = "python/check_repos.py";
+    std::string destinationFilePath = project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup\\script.py";
+
+    std::ifstream sourceFile(sourceFilePath, std::ios::binary);
+    std::ofstream destinationFile(destinationFilePath, std::ios::binary);
+
+    if (!sourceFile.is_open()) {
+        std::cerr << RED <<"Error opening source file" << std::endl;
+        return;
+    }
+
+    if (!destinationFile.is_open()) {
+        std::cerr << RED <<"Error opening destination file" << std::endl;
+        return;
+    }
+
+    char buffer[4096];
+    while (!sourceFile.eof()) {
+        sourceFile.read(buffer, sizeof(buffer));
+        destinationFile.write(buffer, sourceFile.gcount());
+    }
+
+    sourceFile.close();
+    destinationFile.close();
+
+    std::cout << GREEN <<"Script created succesful" << std::endl;
+
+    std::cout <<RESET;
 }
