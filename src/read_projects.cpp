@@ -48,5 +48,40 @@ void Projects::_view_all_projects(){
     file.close();
 }
 void Projects::_delete_project(){
+    std::string projName;
+    std::cout << MAGENTA << "Input project name: ";
+    std::cin >> projName;
 
+    std::string filename = "config.ini";
+
+    // Открываем файл для чтения
+    std::ifstream inputFile(filename);
+
+    if (!inputFile.is_open()) {
+        std::cerr <<RED << "Error delete project" << std::endl;
+        return;
+    }
+
+    // Открываем временный файл для записи
+    std::ofstream tempFile("temp.txt");
+
+    // Читаем файл построчно и копируем строки во временный файл, кроме той, которую хотим удалить
+    std::string line;
+    while (std::getline(inputFile, line)) {
+        if (line != projName) {
+            tempFile << line << std::endl;
+        }
+    }
+
+    // Закрываем файлы
+    inputFile.close();
+    tempFile.close();
+
+    // Удаляем оригинальный файл
+    remove(filename.c_str());
+
+    // Переименовываем временный файл в оригинальный
+    rename("temp.txt", filename.c_str());
+
+    std::cout << GREEN << "Project " << projName << " deleted" << RESET << std::endl;
 }

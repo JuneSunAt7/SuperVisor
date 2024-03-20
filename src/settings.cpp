@@ -54,10 +54,7 @@ void SetupSettings::_add_projects(CreateProject &project){
         std::cerr << "Failed to create settings" << std::endl;
         return;
     }
-    
-    file << "["  << project.user_project.projectName << "]" << std::endl;
-    file << "name=" << project.user_project.projectName << std::endl;
-    file << "owner=" << project.user_project.owner << std::endl;
+    file <<  project.user_project.projectName << std::endl;
 
     file.close();
 
@@ -219,3 +216,4 @@ void SetupSettings::_move_running_app(CreateProject &project){
     std::cout << GREEN << "Runner app setup successfully" << std::endl;
     std::cout << RESET;
 }
+

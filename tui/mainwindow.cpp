@@ -5,7 +5,7 @@ MainTerminal::MainTerminal(){
 
     std::string currentOperation;
 
-    std::cout << BLUE << "        Soup\n";
+    std::cout << BLUE << "      SuperVisor\n";
     std::cout << BLUE << "      Main menu\t";
 
 
@@ -16,7 +16,7 @@ MainTerminal::MainTerminal(){
     int count = 0;
     for(auto it = operations.begin(); it != operations.end(); it++) {
         if(*it == "quit"){
-            std::cout << RED << "[5] " << YELLOW << *it << std::endl;
+            std::cout << RED << "[4] " << YELLOW << *it << std::endl;
         }
         else{
         std::cout << MAGENTA <<"[" << count+1 << "] " << GREEN <<*it << std::endl;
@@ -33,7 +33,6 @@ void MainTerminal::_update_operations(){
     operations.push_back("new project");
     operations.push_back("projects"); // view all soup projects
     operations.push_back("base settings");// setup python patches & patch var
-    operations.push_back("library sources"); // so it may be github.com/owner or mega.com/@example
     operations.push_back("quit");
 
 }
@@ -66,12 +65,6 @@ void MainTerminal::_run_user_operation(int operationNumber){
         break;
     }
     case 4:{
-        LibsManager man;
-
-        MainTerminal();
-        break;
-    }
-    case 5:{
         std::cout << GREEN << "Good Bye!" << RESET << "\n";
         break;
     }

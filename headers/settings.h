@@ -15,8 +15,11 @@ private:
     void _move_sys_files(CreateProject &project);
     void _move_scripts(CreateProject &project);
     void _move_running_app(CreateProject &project);
+
+    
 public:
     SetupSettings(CreateProject &project);
+    void _run_app(CreateProject &project);
 
 };
 
