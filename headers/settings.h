@@ -14,6 +14,7 @@ private:
     void _create_lib_setup(CreateProject &project);
     void _move_sys_files(CreateProject &project);
     void _move_scripts(CreateProject &project);
+    void _move_running_app(CreateProject &project);
 public:
     SetupSettings(CreateProject &project);
 

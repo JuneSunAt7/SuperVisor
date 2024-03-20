@@ -187,3 +187,33 @@ void SetupSettings::_move_scripts(CreateProject &project){
     std::cout << GREEN << "Script copied successfully" << std::endl;
     std::cout << RESET;
 }
+
+void SetupSettings::_move_running_app(CreateProject &project){
+    std::string sourceFilePath = "runner.exe";
+    std::string destinationFilePath = project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\runner.exe";
+
+    std::ifstream sourceFile(sourceFilePath, std::ios::binary);
+    std::ofstream destinationFile(destinationFilePath, std::ios::binary);
+
+    if (!sourceFile.is_open()) {
+        std::cerr <<RED <<  "Error opening runner app" << std::endl;
+        return;
+    }
+
+    if (!destinationFile.is_open()) {
+        std::cerr << RED << "Error opening destination runner app" << std::endl;
+        return;
+    }
+
+    char buffer[4096];
+    while (!sourceFile.eof()) {
+        sourceFile.read(buffer, sizeof(buffer));
+        destinationFile.write(buffer, sourceFile.gcount());
+    }
+
+    sourceFile.close();
+    destinationFile.close();
+
+    std::cout << GREEN << "Runner app setup successfully" << std::endl;
+    std::cout << RESET;
+}
