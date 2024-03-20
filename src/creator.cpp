@@ -44,7 +44,7 @@ std::list <std::string> CreateProject::_get_libs(){
     std::cout << "Count of the libs: ";
     
     std::cin >> countLibs;
-    std::cout << MAGENTA << "So example: pocoproject/poco" << std::endl;
+    std::cout << MAGENTA << "So example: pocoproject/poco" << BLUE << std::endl;
 
      for (int i = 0; i < countLibs; ++i) {
         std::cout << "Library " << i+1 << ": ";

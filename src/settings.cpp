@@ -186,11 +186,13 @@ void SetupSettings::_move_scripts(CreateProject &project){
 
     std::cout << GREEN << "Script copied successfully" << std::endl;
     std::cout << RESET;
+
+    _move_running_app(project);
 }
 
 void SetupSettings::_move_running_app(CreateProject &project){
     std::string sourceFilePath = "runner.exe";
-    std::string destinationFilePath = project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\runner.exe";
+    std::string destinationFilePath = project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup\\runner.exe";
 
     std::ifstream sourceFile(sourceFilePath, std::ios::binary);
     std::ofstream destinationFile(destinationFilePath, std::ios::binary);

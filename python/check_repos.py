@@ -2,11 +2,7 @@ import requests
 from colorama import init, Fore
 
 def check_repo_exist(repo_name):
-    with open('supervis.ini', 'r')as file:
-        for line in file:
-             if 'owner=' in line:
-                 owner_value = line.split('=')[1].strip()
-                 break
+    
     url = f"https://api.github.com/repos/{repo_name}"
     response = requests.get(url)
 
@@ -15,7 +11,7 @@ def check_repo_exist(repo_name):
     
         # founded repos
         with open('valid_libs.spv', 'a+') as valid:
-            valid.write(owner_value + "/" +repo_name+"\n")
+            valid.write(repo_name+"\n")
     else:
         print(Fore.RED + f"Репозиторий {repo_name} не существует на GitHub")
 
