@@ -10,7 +10,9 @@ SetupSettings::SetupSettings(CreateProject &project){
     std::filesystem::create_directories(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\docs");
 
     std::ofstream outfile(project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\docs\\README.MD");
+    
     _setup_settings(project);
+
 
 }
 
@@ -152,11 +154,13 @@ void SetupSettings::_move_sys_files(CreateProject &project){
     std::cout << GREEN <<"Requirements created succesful" << std::endl;
 
     std::cout <<RESET;
+
+    _move_scripts(project);
 }
 
 void SetupSettings::_move_scripts(CreateProject &project){
-    std::string sourceFilePath = "sys_scripts/clone_repo.sh";
-    std::string destinationFilePath = project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup\\get_data.sh";
+    std::string sourceFilePath = "sys_scripts/clone_repo.bat";
+    std::string destinationFilePath = project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup\\clone_repo.bat";
 
     std::ifstream sourceFile(sourceFilePath, std::ios::binary);
     std::ofstream destinationFile(destinationFilePath, std::ios::binary);

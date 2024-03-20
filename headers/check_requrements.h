@@ -21,9 +21,6 @@ class CheckerRRequrements{
         void _check_git();
 
         void _choose_operation(int &numOperation);
-
-        
-
     public:
         CheckerRRequrements();
 
