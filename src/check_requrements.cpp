@@ -5,6 +5,7 @@ CheckerRRequrements::CheckerRRequrements(){
     
     std::cout << MAGENTA << "[1] " << YELLOW << "check python set\n";
     std::cout << MAGENTA << "[2] " << YELLOW << "check path\n";
+    std::cout << MAGENTA << "[3] " << YELLOW << "check git set\n";
 
     std::cout << RESET << "Number of operation: ";
     std::cin >> numOfOperation;
@@ -12,8 +13,13 @@ CheckerRRequrements::CheckerRRequrements(){
     _choose_operation(numOfOperation);
 }
 
-bool CheckerRRequrements::_check_python(){
-    return system("python --version");
+void CheckerRRequrements::_check_python(){
+    std::cout << GREEN << system("python --version") << std::endl;
+    std::cout << RESET;
+}
+void CheckerRRequrements::_check_git(){
+    std::cout << GREEN << system("git --version") << std::endl;
+    std::cout << RESET;
 }
 
 void CheckerRRequrements::_get_path_to_python(){
@@ -36,7 +42,7 @@ void CheckerRRequrements::_choose_operation(int &numOperation){
      switch (numOperation)
     {
     case 1:{
-         std::cout << GREEN << _check_python() << RESET << "\n";
+        _check_python();
         break;
     }
     case 2:{
@@ -49,6 +55,9 @@ void CheckerRRequrements::_choose_operation(int &numOperation){
             std::cout << RED << "PATH variable not found" << RESET << std::endl;
         } 
         break;
+    }
+    case 3:{
+        _check_git();
     }
     default:
         break;

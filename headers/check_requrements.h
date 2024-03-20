@@ -15,9 +15,10 @@ class CheckerRRequrements{
     private:
         dependes user_deps;
 
-        bool _check_python();
+        void _check_python();
         void _get_path_to_python();
         void _all_patches();
+        void _check_git();
 
         void _choose_operation(int &numOperation);
 

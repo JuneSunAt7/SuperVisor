@@ -13,7 +13,7 @@ private:
     void _add_path_project(CreateProject &project);
     void _create_lib_setup(CreateProject &project);
     void _move_sys_files(CreateProject &project);
-    
+    void _move_scripts(CreateProject &project);
 public:
     SetupSettings(CreateProject &project);
 

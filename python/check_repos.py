@@ -15,7 +15,7 @@ def check_repo_exist(repo_name):
     
         # founded repos
         with open('valid_libs.spv', 'a+') as valid:
-            valid.write(repo_name+"\n")
+            valid.write(owner_value + "/" +repo_name+"\n")
     else:
         print(Fore.RED + f"Репозиторий {repo_name} не существует на GitHub")
 

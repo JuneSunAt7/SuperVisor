@@ -153,3 +153,33 @@ void SetupSettings::_move_sys_files(CreateProject &project){
 
     std::cout <<RESET;
 }
+
+void SetupSettings::_move_scripts(CreateProject &project){
+    std::string sourceFilePath = "sys_scripts/clone_repo.sh";
+    std::string destinationFilePath = project.user_project.pathToProject + "\\" + project.user_project.projectName + "\\setup\\get_data.sh";
+
+    std::ifstream sourceFile(sourceFilePath, std::ios::binary);
+    std::ofstream destinationFile(destinationFilePath, std::ios::binary);
+
+    if (!sourceFile.is_open()) {
+        std::cerr <<RED <<  "Error opening script file" << std::endl;
+        return;
+    }
+
+    if (!destinationFile.is_open()) {
+        std::cerr << RED << "Error opening destination script" << std::endl;
+        return;
+    }
+
+    char buffer[4096];
+    while (!sourceFile.eof()) {
+        sourceFile.read(buffer, sizeof(buffer));
+        destinationFile.write(buffer, sourceFile.gcount());
+    }
+
+    sourceFile.close();
+    destinationFile.close();
+
+    std::cout << GREEN << "Script copied successfully" << std::endl;
+    std::cout << RESET;
+}
