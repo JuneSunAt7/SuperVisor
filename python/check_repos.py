@@ -7,7 +7,7 @@ def check_repo_exist(repo_name):
              if 'owner=' in line:
                  owner_value = line.split('=')[1].strip()
                  break
-    url = f"https://api.github.com/repos/{owner_value + "/" +repo_name}"
+    url = f"https://api.github.com/repos/{repo_name}"
     response = requests.get(url)
 
     if response.status_code == 200:

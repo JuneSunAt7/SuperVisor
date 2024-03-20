@@ -15,7 +15,6 @@ CreateProject::CreateProject(){
 
     std::cout << RESET;
     
-    
 }
 
 std::string CreateProject::_get_project_name(){
@@ -43,7 +42,9 @@ std::list <std::string> CreateProject::_get_libs(){
     std::string currentLib;
 
     std::cout << "Count of the libs: ";
+    
     std::cin >> countLibs;
+    std::cout << MAGENTA << "So example: pocoproject/poco" << std::endl;
 
      for (int i = 0; i < countLibs; ++i) {
         std::cout << "Library " << i+1 << ": ";
